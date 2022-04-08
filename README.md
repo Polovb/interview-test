@@ -8,7 +8,7 @@ I've only made changes on Numbers.vue and App.vue.
 
 3. Instead of scanning through the DOM elements, the `hov()` method goes through the `numbers` list.
 
-4. Instead of using `\$parent.limit`, I'm using props to make it clear from `App.vue` that the parent component is sending this variable to its child component.
+4. Instead of using `$parent.limit`, I'm using props to make it clear from `App.vue` that the parent component is sending this variable to its child component.
 
 5. Finally I've made some CSS changes so it would look neat and to improve readability on bigger monitors. This is after all a test for a frontend role.
 
