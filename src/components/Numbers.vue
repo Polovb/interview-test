@@ -25,7 +25,7 @@ export default {
 	data()
 	{
 		return {
-			// numbers actualy does something now as it's the list used for rendering
+			// numbers is now the list used for rendering
 			numbers: [],
 
 			// this is generated on hover and emptied on mouseOut. Again, cleaner logic
