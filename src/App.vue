@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <input type="number" v-model="limit" />
+    
+    <!-- I'm now using props so it's clear in App that numbers uses limit. -->
     <Numbers :limit="limit"/>
   </div>
 </template>
@@ -21,13 +23,15 @@ export default {
 </script>
 
 <style scoped>
+
+/* And some style changes so it won't take up the whole screen when it's wider than 1200px and for aesthetics. */
+
 #app{
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 input{
@@ -37,7 +41,6 @@ input{
   border-radius: 4px;
   outline: none;
   margin-bottom: 20px;
-  /* max-width: 200px; */
 }
 input:hover{
   border-color: hsl(0, 0%, 75%);
@@ -46,4 +49,5 @@ input:hover{
 input:focus{
   border-color: hsl(0, 0%, 65%);
 }
+
 </style>
