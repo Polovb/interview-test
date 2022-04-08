@@ -10,7 +10,9 @@ I've only edited `src/App.vue` and `src/components/Numbers.vue`.
 
 4. Instead of using `$parent.limit`, I'm using `props` to make it clear from `App.vue` that the parent component is sending this variable to its child component.
 
-5. Finally I've made some CSS changes so it would look neat and to improve readability my monitors by setting a `max-width`. This is after all a test for a frontend role.
+5. I've created another install with Vue 3.0 to use composition instead of options to have a different version of the code, which I find cleaner. I've put it on the `composition` branch.
+
+6. I've made some CSS changes so it would look neat and to improve readability my monitors by setting a `max-width`. This is after all a test for a frontend role.
 
 <!-- # Spec
 
