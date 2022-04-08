@@ -1,6 +1,6 @@
 ### Changes I Made
 
-I've only edited Numbers.vue and App.vue.
+I've only edited `src/App.vue` and `Numbers.vue`.
 
 1. The main change I've made is removing DOM modifications. Instead of the `hov()` method directly making `classList` changes, it now creates a list of divisors for the number hovered. Then in the template, a number having the active class depends on it being in the list of divisors. Editing classes directly worked fine in this instance but the logic I used fits better with Vue's data-first approach.
 
