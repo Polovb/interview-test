@@ -1,4 +1,4 @@
-# Changes I Made
+### Changes I Made
 
 I've only made changes on Numbers.vue and App.vue.
 
