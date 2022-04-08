@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="number" :class="isActive(number) ? 'active' : ''" v-for="number in numbers" :key="number" @mouseover="hov(number)" @mouseout="reset">
+		<div class="number" :id="'number-'+number" :class="divisors.includes(number) ? 'active' : ''" v-for="number in numbers" :key="number" @mouseover="hov(number)" @mouseout="reset">
 			{{number}}
 		</div>
 	</div>
@@ -34,9 +34,6 @@ export default {
 		hov(number)
 		{
 			for(let i = 0; i < this.numbers.length; i++) if(number % i === 0) this.divisors = [...this.divisors, i];
-		},
-		isActive(number){
-			return this.divisors.includes(number);
 		},
 		reset()
 		{
