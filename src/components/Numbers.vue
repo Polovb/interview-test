@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="number" :id="'number-'+number" v-for="number in n()" :key="number" @mouseover="hov(number)" @mouseout="reset">
+		<div class="number" :class="isActive(number) ? 'active' : ''" v-for="number in numbers" :key="number" @mouseover="hov(number)" @mouseout="reset">
 			{{number}}
 		</div>
 	</div>
@@ -8,47 +8,39 @@
 
 <script>
 export default {
+	props: ['limit'],
+	beforeMount(){
+		this.numbersList();
+	},
+	watch:{
+		limit: function(){
+			this.numbersList();
+		},
+	},
 	data()
 	{
 		return {
-			limit: this.$parent.limit,
-			numbers: []
-		}
-	},
-	watch: {
-		['$parent.limit'](newLimit)
-		{
-			this.limit = newLimit;
+			numbers: [],
+			divisors: [],
 		}
 	},
 	methods: {
-		n()
+		numbersList()
 		{
 			let numbers = [];
-			for(var i = 0; i < this.limit; i++)
-			{
-				numbers = [...numbers, i];
-			}
-			return numbers.sort(() => Math.random() - 0.5);
+			for(var i = 0; i < this.limit; i++) numbers = [...numbers, i];
+			this.numbers = numbers.sort(() => Math.random() - 0.5);
 		},
 		hov(number)
 		{
-			const nums = document.querySelectorAll('.number');
-
-			for(let i = 0; i < nums.length; i++)
-			{
-				const num = nums[i].textContent.trim();
-				if(number % num === 0)
-				{
-					nums[i].classList.add('active')
-					console.log('divisor', num)
-				}
-			}
+			for(let i = 0; i < this.numbers.length; i++) if(number % i === 0) this.divisors = [...this.divisors, i];
+		},
+		isActive(number){
+			return this.divisors.includes(number);
 		},
 		reset()
 		{
-			const nums = document.querySelectorAll('.number');
-			nums.forEach(num => num.classList.remove('active'))
+			this.divisors = [];
 		}
 	}
 }
@@ -57,12 +49,19 @@ export default {
 <style scoped>
 	.number {
 		display: inline-block;
-		padding: 5px;
-		background-color: lightgrey;
+		padding: 3px 5px;
+		background-color: hsl(0, 0%, 93%);
 		margin: 5px;
+		border-radius: 3px;
+		border: 1px solid hsl(0, 0%, 0%, 0.1);
+		/* box-shadow: 1px 1px 0px 1px hsl(0,0%,0%, 0.1); */
+		font-family: Arial, Helvetica, sans-serif;
+		cursor: default;
 	}
 
 	.active {
 		background-color: red;
+		color: white;
+		border-color: hsl(0, 0%, 0%, 0.4);
 	}
 </style>
