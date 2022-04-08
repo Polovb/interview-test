@@ -10,7 +10,7 @@ I've only edited Numbers.vue and App.vue.
 
 4. Instead of using `$parent.limit`, I'm using `props` to make it clear from `App.vue` that the parent component is sending this variable to its child component.
 
-5. Finally I've made some CSS changes so it would look neat and to improve readability on bigger monitors. This is after all a test for a frontend role.
+5. Finally I've made some CSS changes so it would look neat and to improve readability my monitors by setting a `max-width`. This is after all a test for a frontend role.
 
 <!-- # Spec
 
