@@ -2,13 +2,15 @@
 
 I've only made changes on Numbers.vue and App.vue.
 
-1. The main change I've made is removing any DOM modifications. Instead of the hov() function directly making classList changes, it now creates a list of divisors for the number hovered. Then in the template, a number receives the active class if it's found in the list of divisors.
+1. The main change I've made is removing DOM modifications. Instead of the `hov()` method directly making `classList` changes, it now creates a list of divisors for the number hovered. Then in the template, a number receives the active class if it's found in the list of divisors. Editing classes directly worked fine in this instance but it can lead to unpredicted bugs and the logic I've used is cleaner.
 
-2. To avoid having to scan through the DOM elements, I've put the list of numbers in a state variable which is then accessed by the hov() function.
+2. Instead of the list rendering triggering the creation of the numbers list, it's handled by the `beforeMount()` method. This allows for better separation of concerns: the script handles processing data and the template handles its display. This also allows for point 3. The `numbers` var is now a state variable, which makes sense as it's meant to change when the limit variable is updated.
 
-3. Instead of using \$parent.limit, I'm using props to make it clear from App.vue that the parent component is sending this variable to its child component.
+3. Instead of scanning through the DOM elements, the `hov()` method goes through the `numbers` list.
 
-4. Finally I've made some CSS changes so it would look neat and to improve readability on bigger monitors. This is after all a test for a frontend role.
+4. Instead of using `\$parent.limit`, I'm using props to make it clear from `App.vue` that the parent component is sending this variable to its child component.
+
+5. Finally I've made some CSS changes so it would look neat and to improve readability on bigger monitors. This is after all a test for a frontend role.
 
 <!-- # Spec
 
