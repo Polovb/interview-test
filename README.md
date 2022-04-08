@@ -2,7 +2,7 @@
 
 I've only edited Numbers.vue and App.vue.
 
-1. The main change I've made is removing DOM modifications. Instead of the `hov()` method directly making `classList` changes, it now creates a list of divisors for the number hovered. Then in the template, a number receives the active class if it's found in the list of divisors. Editing classes directly worked fine in this instance but the logic I used fits better with Vue's data-first approach.
+1. The main change I've made is removing DOM modifications. Instead of the `hov()` method directly making `classList` changes, it now creates a list of divisors for the number hovered. Then in the template, a number having the active class depends on it being in the list of divisors. Editing classes directly worked fine in this instance but the logic I used fits better with Vue's data-first approach.
 
 2. Instead of the list rendering triggering the creation of the numbers list, it's handled by the `beforeMount()` method. This allows for better separation of concerns: the script handles processing data and the template handles its display. This also allows for point 3. The `numbers` var is now a state variable, which makes sense as it's meant to change when the limit variable is updated.
 
